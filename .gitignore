@@ -1,1 +1,10 @@
+<<<<<<< HEAD
 author_project.pro.user.c20dd09
+=======
+author_project.pro.user.*
+author_project.pro.user
+Makefile
+Makefile.Debug
+Makefile.Release
+author_project.pro.user.fbe0d90
+>>>>>>> 1e09cd5fbda0d4d885b4b13500419ed7e9e91a97
