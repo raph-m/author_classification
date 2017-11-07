@@ -8,10 +8,12 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    testgit.cpp
+    testgit.cpp \
+    text.cpp
 
 HEADERS += \
-    testgit.h
+    testgit.h \
+    text.h
 
 DISTFILES += \
     .gitignore
