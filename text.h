@@ -6,13 +6,13 @@ class text
 {
 public:
 
-    string title;
-    string author;
+    std::string title;
+    std::string author;
     long id;
 
 
     text();
-    text(string x, string y, long number);
+    text(std::string x, std::string y, long number);
 };
 
 #endif // TEXT_H
