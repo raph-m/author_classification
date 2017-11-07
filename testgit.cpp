@@ -15,5 +15,6 @@ void test() {
     cout << "My name is Arnaud Stiegler" << endl;
     cout << "My name is Paul Vardon" << endl;
     cout << "My name is Marianne de Vriendt" << endl;
+    cout << "My name is Luca Ganassali" << endl;
 }
 
