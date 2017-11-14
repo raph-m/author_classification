@@ -9,13 +9,13 @@ public:
     long id;
     std::vector<char> textUnit;
 
-    int* charCount;
-    int* wordCount;
+    std::vector<int> charCount;
+    std::vector<int> wordCount;
     int sentenceCount;
 
     Block();
     Block(long number, std::vector<char> text);
-    Block(long number, std::vector<char> text,int* f1,int* f2,int f3);
+    void updateCharCount();
 };
 
 #endif // BLOCK_H
