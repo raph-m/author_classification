@@ -3,6 +3,7 @@
 
 //--------------
 #include <vector>
+#include <cmath>
 
 using namespace std;
 //  ----------------------------------
@@ -22,36 +23,5 @@ public:
 
 };
 
-// ----------------------------------
-// Eucliden Distance
-// ----------------------------------
-
-class Euclidean : public Distances {
-
-public:
-        Euclidean(int p_);
-        virtual double operator()(const vector<long>& X1, const vector<long>& X2) const;
-        virtual ~Euclidean();
-
-private:
-        int p;
-};
-
-// ----------------------------------
-// Cosine Similarity (this is not a
-// distance but represents a usefual
-// tool to calculate similarity bet-
-// ween two vectors
-// ----------------------------------
-
-class Cosine :public Distance {
-
-public:
-        Cosine();
-        virtual double operator()(const vector<long>& X1, const vector<long>& X2) const;
-        virtual ~Cosine();
-
-private:
-};
 
 #endif // DISTANCES_H
