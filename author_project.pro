@@ -10,12 +10,14 @@ TEMPLATE = app
 SOURCES += main.cpp \
     testgit.cpp \
     text.cpp \
-    block.cpp
+    block.cpp \
+    features.cpp
 
 HEADERS += \
     testgit.h \
     text.h \
-    block.h
+    block.h \
+    features.h
 
 DISTFILES += \
     .gitignore
