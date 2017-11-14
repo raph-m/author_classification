@@ -4,13 +4,13 @@ Features::Features()
 {
 }
 
-Features::Features(long number, int* f1, int* f2){
+Features::Features(long number, std::vector<int> f1, std::vector<int> f2){
     this->id = number;
     this->charCount = f1;
     this->wordCount = f2;
 }
 
-Features::Features(long number, int* f1, int* f2,int f3){
+Features::Features(long number, std::vector<int> f1, std::vector<int> f2,int f3){
     this->id = number;
     this->charCount = f1;
     this->wordCount = f2;
