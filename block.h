@@ -12,17 +12,16 @@ public:
     long id;
     vector<char> textUnit;
 
-    vector<int> charCount;
+    vector<int> charFrequency;
     int wordCount;
     int sentenceCount;
 
     Block();
     Block(long number, vector<char> text);
-    Block(long number, vector<char> text,vector<int> f1,int f2,int f3);
 
     void updateWordCount();
     void updateSentenceCount();
-    void updateCharCount();
+    void updateCharFrequency();
 
 };
 
