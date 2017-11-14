@@ -11,13 +11,15 @@ SOURCES += main.cpp \
     testgit.cpp \
     text.cpp \
     block.cpp \
-    features.cpp
+    features.cpp \
+    distances.cpp
 
 HEADERS += \
     testgit.h \
     text.h \
     block.h \
-    features.h
+    features.h \
+    distances.h
 
 DISTFILES += \
     .gitignore
