@@ -22,5 +22,6 @@ HEADERS += \
     distances.h
 
 DISTFILES += \
-    .gitignore
+    .gitignore \
+    100mostCommonWord.txt
 
