@@ -1,0 +1,24 @@
+Ce dossier à la structure de base de données assez classique mais construite "à la main".
+
+Le fichier index.json contient une liste de dictionnaires où chaque dictionnaire à le format suivant:
+
+	{
+		"number_of_lines": 9525,
+	 	"author": "Poe, Edgar Allan",
+	 	"title": "The Complete Poetical Works of Edgar Allan Poe&#13;\nIncluding Essays on 			Poetry",
+		"id": 200
+	}
+
+On peut ensuite retrouver dans le dossier "books" le texte du livre correspondant, le fichier a le format 200.txt par exemple.
+
+La base de données contient environ 1600 livres. Chaque livre fait au minimum 2000 lignes (avec une dizaine de mots par ligne). Les livres ont été tronqués pour éviter de prendre en compte les différentes licences ou références en début et en fin de livre, cela explique donc pourquoi les fichiers txt commence et finissent parfois au milieu d'un chapitre.
+
+Le fichier stats contient des informations sur la base de données sous la forme:
+
+AUTEUR
+NOMBRE TOTAL DE LIVRES
+NOMBRE TOTAL DE LIGNES
+ 
+Sur une cinquantaine de livres vérifiés "à la main" tous étaient des romans. Mais il n'est pas impossible de trouver des pieces de theatre ou autre (il faudrait tout vérifier quoi).
+
+
