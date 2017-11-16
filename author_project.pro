@@ -12,14 +12,19 @@ SOURCES += main.cpp \
     text.cpp \
     block.cpp \
     features.cpp \
-    distances.cpp
+    distances.cpp \
+    dataset.cpp
 
 HEADERS += \
     testgit.h \
     text.h \
     block.h \
     features.h \
-    distances.h
+    distances.h \
+    dataset.h \
+    matrix.h \
+    column.h \
+    probamap.h \
 
 DISTFILES += \
     .gitignore \
