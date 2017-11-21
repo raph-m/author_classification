@@ -1,10 +1,10 @@
 #include <QCoreApplication>
-#include "testgit.h"
+#include <iostream>
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    test();
+    std::cout<< "Hello world ! " << std::endl;
     return a.exec();
 }
 

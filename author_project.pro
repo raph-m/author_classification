@@ -8,23 +8,17 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    testgit.cpp \
-    text.cpp \
-    block.cpp \
-    features.cpp \
-    distances.cpp \
-    dataset.cpp
+    Preprocessing/testgit.cpp \
+    Preprocessing/text.cpp \
+    Preprocessing/block.cpp \
+    Preprocessing/features.cpp
 
 HEADERS += \
-    testgit.h \
-    text.h \
-    block.h \
-    features.h \
-    distances.h \
-    dataset.h \
-    matrix.h \
-    column.h \
-    probamap.h \
+    Preprocessing/testgit.h \
+    Preprocessing/text.h \
+    Preprocessing/block.h \
+    Preprocessing/features.h
+
 
 DISTFILES += \
     .gitignore \
