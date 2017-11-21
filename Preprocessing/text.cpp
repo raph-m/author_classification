@@ -1,5 +1,7 @@
+#pragma once
 #include "text.h"
-#include <string>
+
+
 
 text::text()
 {
@@ -13,12 +15,14 @@ text::text(std::string x, std::string y,long number,std::vector<Block> blockList
     this->blockList=blockList;
 }
 
-std::string getText(int id){
+std::string text::getText(int id){
     // Find the file
-    std::string filePath = std::string("../../data/books/") + std::to_string(id) + ".txt"; //A VERFIER///////////////////////
+    string str = text::intToString(id);
+    std::string filePath = std::string("../../data/books/") + str + ".txt"; //A VERFIER///////////////////////
 
     // Open the file
-    std::ifstream fichier(filePath);
+    std::ifstream fichier(filePath.c_str(), std::ios::in);
+
 
     // Prepare the result
     std::string result = "";
@@ -36,14 +40,16 @@ std::string getText(int id){
         fichier.close();
     }else{
         std::cout << "Impossible d'ouvrir le fichier !" << std::endl;
+
+        // std::cout << result << std::endl;
+        return result;
     }
-    // std::cout << result << std::endl;
-    return result;
+
 }
 
-std::vector<std::vector<char>> parseTextToBlock(int id){
-    std::string textToParse = getText(id);
-    std::vector<std::vector<char>> textParsed;
+std::vector<Block> text::parseTextToBlock(int id){
+    std::string textToParse = text::getText(id);
+    std::vector<Block> textParsed;
     size_t numberOfLetters = textToParse.length();
     for (int i = 0; i < numberOfLetters/1000; i++){
         std::vector<char> block;
@@ -52,15 +58,15 @@ std::vector<std::vector<char>> parseTextToBlock(int id){
             // std::cout << textToParse[i*j] << " ";
             block.push_back(char(textToParse[i * 1000 + j]));
         }
-        textParsed.push_back(block);
+        textParsed.push_back(Block(id,block));
         // std::cout << std::endl;
     }
     return(textParsed);
 }
 
-std::vector<std::map<std::string, std::string>> readJson(){
+std::vector<std::map<std::string, std::string> > text::readJson(){
     std::ifstream fichier("../../data/final_index.json");   // A VERIFIER   ///////////////////////////////////////////////////
-    std::vector<std::map<std::string, std::string>> vectJson;
+    std::vector<std::map<std::string, std::string> > vectJson;
     if(fichier){ // si l'ouverture a fonctionné
         std::string ligne;
         getline(fichier, ligne);
@@ -113,14 +119,21 @@ std::vector<std::map<std::string, std::string>> readJson(){
     return(vectJson);
 }
 
-void printMap(std::map<std::string, std::string> mapIn){
+void text::printMap(std::map<std::string, std::string> mapIn){
     for (std::map<std::string, std::string>::iterator it = mapIn.begin(); it != mapIn.end(); it++){
         std::cout << it->first << ": " << it->second << std::endl;
     }
 }
 
-void createBlockList(){
+void text::createBlockList(){
     this->blockList = parseTextToBlock(this->id);
+}
+
+string text::intToString(long a){
+    stringstream ss;
+    ss << a;
+    string str = ss.str();
+    return str;
 }
 
 

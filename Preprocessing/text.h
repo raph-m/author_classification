@@ -1,3 +1,4 @@
+#pragma once
 #ifndef TEXT_H
 #define TEXT_H
 #include <string>
@@ -7,6 +8,7 @@
 #include <sstream>
 #include <fstream>
 #include <map>
+
 
 class text
 {
@@ -22,9 +24,10 @@ public:
     text(std::string x, std::string y, long number,std::vector<Block> blockList);
     string getText(int id);
     std::vector<Block> parseTextToBlock(int id);
-    std::vector<std::map<std::string, std::string>> readJson();
+    std::vector<std::map<std::string, std::string> > readJson();
     void printMap(std::map<std::string, std::string> mapIn);
     void createBlockList();
+    static string intToString(long a);
 };
 
 #endif // TEXT_H
