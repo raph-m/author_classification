@@ -63,3 +63,5 @@ void Block::updateCharFrequency(){// takes into account characters from 32 (spac
     charFrequency = res;
 }
 
+
+
