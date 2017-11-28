@@ -9,15 +9,18 @@ int main(int argc, char *argv[])
     std::cout<< test0.id << std::endl;
     test0.createBlockList();
 
-    test0.blockList[0].updateUnicWords();
-    test0.blockList[0].updateDifferentWords();
-    test0.blockList[0].updateDifferentWordsCount();
-    test0.blockList[0].updateUnicWordsCount();
-    test0.blockList[0].updateCharFrequency();
-    test0.blockList[0].updateWordFrequency();
+    for(int i=0; i< test0.blockList.size();i++){
+        test0.blockList[i].updateCharFrequency();
+        test0.blockList[i].updateDifferentWords();
+        test0.blockList[i].updateDifferentWordsCount();
+        test0.blockList[i].updateSentenceCount();
+        test0.blockList[i].updateUnicWords();
+        test0.blockList[i].updateUnicWordsCount();
+        test0.blockList[i].updateWordCount();
+        test0.blockList[i].updateWordFrequency();
+    }
 
-    std::cout<< text::intToString(test0.blockList[0].differentWordsCount) << std::endl;
-    std::cout<< text::intToString(test0.blockList[0].unicWordsCount) << std::endl;
-    std::cout<< text::intToString(test0.blockList[0].charFrequency.size()) << std::endl;
-    std::cout<< text::intToString(test0.blockList[0].wordFrequency.size()) << std::endl;
+
+    Features test1;
+    test1= test0.agregate();
 }
