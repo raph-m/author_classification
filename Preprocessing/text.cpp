@@ -137,4 +137,22 @@ string text::intToString(long a){
     return str;
 }
 
+Features text::agregate(){
+    int l=blockList.size();
+    std::vector<int> wordF;
+    int wordC;
+    std::vector<int> charF;
+    int sentenceC;
+    for (int i=0;i<l;i++){
+        wordC=wordC+(blockList.at(i).wordCount)/l;
+        for (int j=0;j<blockList.at(i).charFrequency.size();j++){
+            charF.at(j)= charF.at(j)+(blockList.at(i).charFrequency.at(j))/l;
+        }
+        sentenceC+=(blockList.at(i).sentenceCount)/l;
+
+        //wordF.at(j)=0; //en attendant Luca
+    }
+    return Features(id,wordF,wordC,charF,sentenceC);
+}
+
 
