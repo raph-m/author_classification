@@ -96,12 +96,13 @@ std::vector<text> text::readJson(){
             token.erase(0, posInt + 10);
             deliInter = "\", \"number_of_lines\": ";
             posInt = token.find(deliInter);
-            textIntern.id = std::atoi(token.substr(0, posInt).c_str());
+            char * pEnd;
+            textIntern.id = std::strtol((token.substr(0, posInt)).c_str(), &pEnd, 10);
             // Get number_of_lines
             token.erase(0, posInt + 21);
             deliInter = ", \"author\": \"";
             posInt = token.find(deliInter);
-            textIntern.number_of_lines = std::atoi(token.substr(0, posInt).c_str());
+            textIntern.number_of_lines = std::strtol((token.substr(0, posInt)).c_str(), &pEnd, 10);
             // Get author
             token.erase(0, posInt + 13);
             deliInter = "\"";

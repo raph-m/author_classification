@@ -171,7 +171,7 @@ void Block::updateWordFrequency(){ // returns an int vector of size 100 (apparit
 
     // Prepare the vector bibli of the 100 common words (load the file)
     std::string filePath = "../author_classification/Preprocessing/100mostCommonWord.txt";
-    std::ifstream fichier(filePath,ios::in);
+    std::ifstream fichier(filePath.c_str(),ios::in);
 
     vector<std::string> bibli;
 
