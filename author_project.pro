@@ -12,7 +12,8 @@ SOURCES += main.cpp \
     Preprocessing/text.cpp \
     Preprocessing/block.cpp \
     Preprocessing/features.cpp \
-    mainvardon.cpp
+    mainvardon.cpp \
+    mainarnaud.cpp
 
 HEADERS += \
     Preprocessing/testgit.h \

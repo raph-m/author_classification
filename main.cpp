@@ -8,15 +8,12 @@ int main(int argc, char *argv[])
     test0.id = 27;
     std::cout<< test0.id << std::endl;
     test0.createBlockList();
-    std::cout<< test0.id << std::endl;
-    std::vector<text> vectJson;
-    vectJson = text::readJson();
-    for (std::vector<text>::iterator textIt = vectJson.begin(); textIt != vectJson.end(); textIt++){
-        for (std::vector<Block>::iterator blockIt = textIt->blockList.begin(); blockIt != textIt->blockList.end(); blockIt++){
-            for (std::vector<char>::iterator charIt = blockIt->textUnit.begin(); charIt != blockIt->textUnit.end(); charIt++){
-                std::cout<< *charIt << std::endl;
-            }
-        }
-    }
-    return 0;
+
+    test0.blockList[0].updateUnicWords();
+    test0.blockList[0].updateDifferentWords();
+    test0.blockList[0].updateDifferentWordsCount();
+    test0.blockList[0].updateUnicWordsCount();
+
+    std::cout<< std::to_string(test0.blockList[0].differentWordsCount) << std::endl;
+    std::cout<< std::to_string(test0.blockList[0].unicWordsCount) << std::endl;
 }

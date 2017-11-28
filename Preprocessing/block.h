@@ -13,6 +13,7 @@ public:
     vector<char> textUnit;
 
     vector<int> charFrequency;
+    vector<int> wordFrequency;
     int wordCount;
     int sentenceCount;
     vector<string> differentWords;
@@ -30,6 +31,7 @@ public:
     void updateDifferentWordsCount();
     void updateUnicWords();
     void updateUnicWordsCount();
+    void updateWordFrequency();
 
 };
 
