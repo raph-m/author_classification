@@ -63,7 +63,7 @@ std::vector<Block> text::parseTextToBlock(int id){
 }
 
 std::vector<text> readJson(){
-    std::ifstream fichier("../../data/final_index.json");   // A VERIFIER   ///////////////////////////////////////////////////
+    std::ifstream fichier("../data/final_index.json");   // A VERIFIER   ///////////////////////////////////////////////////
     std::vector<text> vectJson;
     if(fichier){ // si l'ouverture a fonctionné
         std::string ligne;
