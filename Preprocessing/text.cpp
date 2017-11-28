@@ -62,7 +62,7 @@ std::vector<Block> text::parseTextToBlock(int id){
     return(textParsed);
 }
 
-std::vector<text> readJson(){
+std::vector<text> text::readJson(){
     std::ifstream fichier("../data/final_index.json");   // A VERIFIER   ///////////////////////////////////////////////////
     std::vector<text> vectJson;
     if(fichier){ // si l'ouverture a fonctionné
@@ -80,6 +80,7 @@ std::vector<text> readJson(){
         size_t pos = 0;
         std::string token;
         while ((pos = ligne.find(delimiter)) != std::string::npos) {
+            std::cout << "New loop" << std::endl;
             token = ligne.substr(0, pos);
             // std::cout << token << std::endl;
 
@@ -95,12 +96,12 @@ std::vector<text> readJson(){
             token.erase(0, posInt + 10);
             deliInter = "\", \"number_of_lines\": ";
             posInt = token.find(deliInter);
-            textIntern.id = token.substr(0, posInt);
+            textIntern.id = std::atoi(token.substr(0, posInt).c_str());
             // Get number_of_lines
             token.erase(0, posInt + 21);
             deliInter = ", \"author\": \"";
             posInt = token.find(deliInter);
-            textIntern.number_of_lines = token.substr(0, posInt);
+            textIntern.number_of_lines = std::atoi(token.substr(0, posInt).c_str());
             // Get author
             token.erase(0, posInt + 13);
             deliInter = "\"";
