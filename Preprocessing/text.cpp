@@ -22,8 +22,6 @@ std::string text::getText(int id){
 
     // Open the file
     std::ifstream fichier(filePath.c_str(), std::ios::in);
-    //std::ifstream fichier;
-    //fichier.open("/Users/arnaudstiegler/Desktop/INF572/data/books/27.txt");
 
     // Prepare the result
     std::string result = "";
@@ -43,9 +41,8 @@ std::string text::getText(int id){
         std::cout << "Impossible d'ouvrir le fichier !" << std::endl;
 
         // std::cout << result << std::endl;
-        return result;
     }
-
+    return result;
 }
 
 std::vector<Block> text::parseTextToBlock(int id){
@@ -54,7 +51,7 @@ std::vector<Block> text::parseTextToBlock(int id){
     size_t numberOfLetters = textToParse.length();
     for (int i = 0; i < numberOfLetters/1000; i++){
         std::vector<char> block;
-        // std::cout << "New block" << std::endl;
+         //std::cout << "New block" << std::endl;
         for (int j = 0; j < 1000; j++){
             // std::cout << textToParse[i*j] << " ";
             block.push_back(char(textToParse[i * 1000 + j]));
