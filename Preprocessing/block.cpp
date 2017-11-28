@@ -211,7 +211,6 @@ void Block::updateWordFrequency(){ // returns an int vector of size 100 (apparit
             else{ //if we have not met any separator, then we just fill word
                 word=word+text[i];
             }
-            cout << word << endl;
         }
 
     wordFrequency = res;
