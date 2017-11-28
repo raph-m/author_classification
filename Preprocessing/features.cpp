@@ -1,4 +1,6 @@
+#pragma once
 #include "features.h"
+#include "text.h"
 
 Features::Features(){
 }
@@ -9,10 +11,27 @@ Features::Features(){
 //    this->wordCount = f2;
 //}
 
-Features::Features(long number, std::vector<int> wordF,int wordC,std::vector<int> charF,int sentenceC){
+Features::Features(long number, std::vector<int> wordF,int wordC,std::vector<int> charF,int sentenceC){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE //
     this->id = number;
     this->charFrequency = charF;
     this->wordCount = wordC;
     this->sentenceCount = sentenceC;
     this->wordFrequency=wordF;
-};
+}
+void Features::createcsv(){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE //
+    string name=text::intToString(id);
+    std::ofstream myfile("../results.csv", std::ios::in);
+    myfile << name+",";
+    myfile << text::intToString(this->wordCount)+",";
+    myfile << text::intToString(this->sentenceCount)+",";
+    for (int i=0; i<charFrequency.size();i++){
+        myfile << text::intToString(this->charFrequency.at(i))+",";
+    }
+    myfile << "\n";
+    for (int i=0; i<wordFrequency.size();i++){
+        myfile << text::intToString(this->wordFrequency.at(i))+",";
+    }
+    myfile << "\n";
+    myfile.close();
+}
+;
