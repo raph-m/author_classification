@@ -62,8 +62,8 @@ std::vector<Block> text::parseTextToBlock(int id){
     return(textParsed);
 }
 
-std::vector<text>::readJson(){
-    std::ifstream fichier("../../data/final_index.json");   // A VERIFIER   ///////////////////////////////////////////////////
+std::vector<text> readJson(){
+    std::ifstream fichier("../data/final_index.json");   // A VERIFIER   ///////////////////////////////////////////////////
     std::vector<text> vectJson;
     if(fichier){ // si l'ouverture a fonctionné
         std::string ligne;
@@ -84,31 +84,34 @@ std::vector<text>::readJson(){
             // std::cout << token << std::endl;
 
             size_t posInt = 0;
-            text texIntern;
+            text textIntern;
             std::string deliInter;
             // Get Title
             token.erase(0, 10);
             deliInter = "\", \"id\": \"";
             posInt = token.find(deliInter);
-            texIntern.title = token.substr(0, posInt);
+            textIntern.title = token.substr(0, posInt);
             // Get id
             token.erase(0, posInt + 10);
             deliInter = "\", \"number_of_lines\": ";
             posInt = token.find(deliInter);
-            texIntern.id = token.substr(0, posInt);
+            textIntern.id = token.substr(0, posInt);
             // Get number_of_lines
             token.erase(0, posInt + 21);
             deliInter = ", \"author\": \"";
             posInt = token.find(deliInter);
-            texIntern.number_of_lines = token.substr(0, posInt);
+            textIntern.number_of_lines = token.substr(0, posInt);
             // Get author
             token.erase(0, posInt + 13);
             deliInter = "\"";
             posInt = token.find(deliInter);
-            texIntern.author = token.substr(0, posInt);
+            textIntern.author = token.substr(0, posInt);
 
             ligne.erase(0, pos + delimiter.length());
-            vectJson.push_back(mapIntern);
+
+            textIntern.createBlockList();
+
+            vectJson.push_back(textIntern);
         }
         // std::cout << ligne << std::endl;
     }else{
