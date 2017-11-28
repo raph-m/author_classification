@@ -31,7 +31,6 @@ void Block::updateSentenceCount(){//sentenceCount is set to the number of senten
     separators.push_back('.');
     separators.push_back('!');
     separators.push_back('?');
-    separators.push_back('-');
 
     int l = textUnit.size(); //always 1000, but we never know what may happen :)
     int mem = 0; //turns to 1 if a separator is met
