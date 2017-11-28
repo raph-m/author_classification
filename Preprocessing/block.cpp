@@ -38,7 +38,7 @@ void Block::updateSentenceCount(){//sentenceCount is set to the number of senten
 
 
     for (int i = 0; i<l; i++){
-        if (find(separators.begin(), separators.end(), textUnit[i]) != separators.end()){//we check whether the char is a separator
+        if (textUnit[i]==separators[0] || textUnit[i]==separators[1] || textUnit[i]==separators[2]){//we check whether the char is a separator
             if (!mem){ //if the previous character was not a separator, it means that we reached the end of a sentence
                 sentenceCount+=1;
                 mem=1;

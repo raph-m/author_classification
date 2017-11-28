@@ -146,16 +146,16 @@ Features text::agregate(){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE //
     std::vector<int> charF(95,0);
     int sentenceC=0;
     for (int i=0;i<l;i++){
-        wordC=wordC+(blockList.at(i).wordCount)/l;
+        wordC=wordC+(blockList.at(i).wordCount);
         for (int j=0;j<blockList.at(i).charFrequency.size();j++){
             charF.at(j)= charF.at(j)+(blockList.at(i).charFrequency.at(j))/l;
         }
         for (int j=0;j<blockList.at(i).wordFrequency.size();j++){
             wordF.at(j)= wordF.at(j)+(blockList.at(i).wordFrequency.at(j))/l;
         }
-        sentenceC+=(blockList.at(i).sentenceCount)/l;
+        sentenceC+=(blockList.at(i).sentenceCount);
     }
-    return Features(id,wordF,wordC,charF,sentenceC);
+    return Features(id,wordF,wordC/l,charF,sentenceC/l);
 }
 
 

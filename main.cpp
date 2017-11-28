@@ -23,4 +23,8 @@ int main(int argc, char *argv[])
 
     Features test1;
     test1= test0.agregate();
+    std::cout<< text::intToString(test1.charFrequency.size())<< std::endl;
+    std::cout<< text::intToString(test1.sentenceCount) << std::endl;
+    std::cout<< text::intToString(test1.wordCount) << std::endl;
+    std::cout<< text::intToString(test1.wordFrequency.size()) << std::endl;
 }
