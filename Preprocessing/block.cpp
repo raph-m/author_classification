@@ -2,7 +2,8 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-
+#include <fstream>
+#include <QDir>
 using namespace std;
 
 Block::Block()
@@ -65,6 +66,7 @@ void Block::updateCharFrequency(){// takes into account characters from 32 (spac
 // renvoie la liste des mots rencontrés (les mots étant définis grâce à l'ensemble des séparateurs)
 // prend en compte les mots tronqués possibles : ne compte pas le 1er mot s'il n'y a pas un séparateur avant et le dernier s'il n'y a pas un séparateur après
 void Block::updateDifferentWords() {
+
 
     // caractères séparateurs de mots
     vector<char> separators = vector<char>();
@@ -150,4 +152,67 @@ void Block::updateUnicWords() {
 // suppose qu'on a déjà déterminé unicWords
 void Block::updateUnicWordsCount(){
     this->unicWordsCount = this->unicWords.size();
+}
+
+
+void Block::updateWordFrequency(){ // returns an int vector of size 100 (apparitions des 100 mots les plus utilisés)
+    vector<char> text = textUnit;
+    vector<char> separators ; //vector with all separators
+    separators.push_back(' ');
+    separators.push_back('.');
+    separators.push_back(',');
+    separators.push_back(';');
+    separators.push_back(':');
+    separators.push_back('\''); //the apostrophe
+    separators.push_back('!');
+    separators.push_back('?');
+    // - is not considered as a separator : up-to-date will be one word
+    // we only work with minuscules, using the tolower function (at char level)
+
+    // Prepare the vector bibli of the 100 common words (load the file)
+    std::string filePath = "../data/100mostCommonWord.txt"; //fichier dans le dossier data, même emplacement
+    std::ifstream fichier(filePath,ios::in);
+
+    vector<std::string> bibli;
+
+    if(fichier.is_open()){  // si l'ouverture a fonctionné
+        std::string ligne;
+        while(getline(fichier, ligne))
+        {
+            bibli.push_back(ligne);
+        }
+        fichier.close();
+    }else{
+        std::cout << "Impossible d'ouvrir la liste des 100 mots ! (Ask Luca)" << std::endl;
+    }
+
+    //Browse the text
+    int l = text.size(); //always 1000, but we never know
+    vector<int> res(100,0); // result vector of 100 int initialized to 0
+
+    std::string word = ""; //we will extract the words one by one and check whether they belong to bibli
+
+    for (int i = 0; i<l; i++){
+            text[i]=tolower(text[i]); //minuscules !
+            //we check whether the char is a separator
+            if (find(separators.begin(), separators.end(), text[i]) != separators.end()){
+                //if we are here then it's the end of a word ; we check if it's in bibli
+                int indice = 0;
+                while(indice<100){
+                    if (bibli[indice]==word){
+
+                        res[indice]+=1;
+                        break;
+                    }
+                    indice++;
+                }
+                word = ""; // then we reinitialize word
+            }
+            else{ //if we have not met any separator, then we just fill word
+                word=word+text[i];
+            }
+            cout << word << endl;
+        }
+
+    wordFrequency = res;
 }
