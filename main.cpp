@@ -17,4 +17,3 @@ int main(int argc, char *argv[])
     std::cout<< std::to_string(test0.blockList[0].unicWordsCount) << std::endl;
 
 }
-
