@@ -140,10 +140,10 @@ string text::intToString(long a){
 
 Features text::agregate(){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE //
     int l=blockList.size();
-    std::vector<int> wordF;
-    int wordC;
-    std::vector<int> charF;
-    int sentenceC;
+    std::vector<int> wordF(100,0);
+    int wordC=0;
+    std::vector<int> charF(95,0);
+    int sentenceC=0;
     for (int i=0;i<l;i++){
         wordC=wordC+(blockList.at(i).wordCount)/l;
         for (int j=0;j<blockList.at(i).charFrequency.size();j++){
