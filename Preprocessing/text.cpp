@@ -148,9 +148,10 @@ Features text::agregate(){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE //
         for (int j=0;j<blockList.at(i).charFrequency.size();j++){
             charF.at(j)= charF.at(j)+(blockList.at(i).charFrequency.at(j))/l;
         }
+        for (int j=0;j<blockList.at(i).wordFrequency.size();j++){
+            wordF.at(j)= wordF.at(j)+(blockList.at(i).wordFrequency.at(j))/l;
+        }
         sentenceC+=(blockList.at(i).sentenceCount)/l;
-
-        //wordF.at(j)=0; //en attendant Luca
     }
     return Features(id,wordF,wordC,charF,sentenceC);
 }
