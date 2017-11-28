@@ -8,6 +8,7 @@
 #include <sstream>
 #include <fstream>
 #include <map>
+#include "features.h"
 
 
 class text
@@ -28,6 +29,8 @@ public:
     void printMap(std::map<std::string, std::string> mapIn);
     void createBlockList();
     static string intToString(long a);
+    Features agregate();
+
 };
 
 #endif // TEXT_H
