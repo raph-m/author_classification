@@ -22,8 +22,6 @@ std::string text::getText(int id){
 
     // Open the file
     std::ifstream fichier(filePath.c_str(), std::ios::in);
-    //std::ifstream fichier;
-    //fichier.open("/Users/arnaudstiegler/Desktop/INF572/data/books/27.txt");
 
     // Prepare the result
     std::string result = "";
