@@ -62,66 +62,6 @@ std::vector<Block> text::parseTextToBlock(int id){
     return(textParsed);
 }
 
-std::vector<text> text::readJson(){
-    std::ifstream fichier("../data/final_index.json");   // A VERIFIER   ///////////////////////////////////////////////////
-    std::vector<text> vectJson;
-    if(fichier){ // si l'ouverture a fonctionné
-        std::string ligne;
-        getline(fichier, ligne);
-        fichier.close();
-        // std::cout << ligne << std::endl;
-
-        // Delete the beggining and the end of the string
-        ligne.erase(0, 2);
-        ligne.erase(ligne.length() - 2, 2);
-
-        // Determine the delimiter
-        std::string delimiter = "}, {";
-        size_t pos = 0;
-        std::string token;
-        while ((pos = ligne.find(delimiter)) != std::string::npos) {
-            std::cout << "New loop" << std::endl;
-            token = ligne.substr(0, pos);
-            // std::cout << token << std::endl;
-
-            size_t posInt = 0;
-            text textIntern;
-            std::string deliInter;
-            // Get Title
-            token.erase(0, 10);
-            deliInter = "\", \"id\": \"";
-            posInt = token.find(deliInter);
-            textIntern.title = token.substr(0, posInt);
-            // Get id
-            token.erase(0, posInt + 10);
-            deliInter = "\", \"number_of_lines\": ";
-            posInt = token.find(deliInter);
-            char * pEnd;
-            textIntern.id = std::strtol((token.substr(0, posInt)).c_str(), &pEnd, 10);
-            // Get number_of_lines
-            token.erase(0, posInt + 21);
-            deliInter = ", \"author\": \"";
-            posInt = token.find(deliInter);
-            textIntern.number_of_lines = std::strtol((token.substr(0, posInt)).c_str(), &pEnd, 10);
-            // Get author
-            token.erase(0, posInt + 13);
-            deliInter = "\"";
-            posInt = token.find(deliInter);
-            textIntern.author = token.substr(0, posInt);
-
-            ligne.erase(0, pos + delimiter.length());
-
-            textIntern.createBlockList();
-
-            vectJson.push_back(textIntern);
-        }
-        // std::cout << ligne << std::endl;
-    }else{
-        std::cout << "Impossible d'ouvrir le fichier !" << std::endl;
-    }
-    return(vectJson);
-}
-
 void text::printMap(std::map<std::string, std::string> mapIn){
     for (std::map<std::string, std::string>::iterator it = mapIn.begin(); it != mapIn.end(); it++){
         std::cout << it->first << ": " << it->second << std::endl;

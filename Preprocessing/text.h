@@ -26,7 +26,6 @@ public:
     text(std::string x, std::string y, long number,std::vector<Block> blockList);
     string getText(int id);
     std::vector<Block> parseTextToBlock(int id);
-    static std::vector<text> readJson();
     void printMap(std::map<std::string, std::string> mapIn);
     void createBlockList();
     static string intToString(long a);
