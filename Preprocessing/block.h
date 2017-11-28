@@ -15,6 +15,10 @@ public:
     vector<int> charFrequency;
     int wordCount;
     int sentenceCount;
+    vector<string> differentWords;
+    int differentWordsCount;
+    vector<string> unicWords;
+    int unicWordsCount;
 
     Block();
     Block(long number, vector<char> text);
@@ -22,6 +26,10 @@ public:
     void updateWordCount();
     void updateSentenceCount();
     void updateCharFrequency();
+    void updateDifferentWords();
+    void updateDifferentWordsCount();
+    void updateUnicWords();
+    void updateUnicWordsCount();
 
 };
 
