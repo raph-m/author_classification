@@ -11,6 +11,8 @@ int main(int argc, char *argv[])
     std::cout<< test0.author << std::endl;
     std::cout<< test0.title << std::endl;
     test0.createBlockList();
+    std::vector<std::map<std::string, std::string> > database;
+
 
 
 

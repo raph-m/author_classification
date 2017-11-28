@@ -65,9 +65,9 @@ std::vector<Block> text::parseTextToBlock(int id){
     return(textParsed);
 }
 
-std::vector<std::map<std::string, std::string> > text::readJson(){
+std::vector<text>::readJson(){
     std::ifstream fichier("../../data/final_index.json");   // A VERIFIER   ///////////////////////////////////////////////////
-    std::vector<std::map<std::string, std::string> > vectJson;
+    std::vector<text> vectJson;
     if(fichier){ // si l'ouverture a fonctionné
         std::string ligne;
         getline(fichier, ligne);
@@ -87,28 +87,28 @@ std::vector<std::map<std::string, std::string> > text::readJson(){
             // std::cout << token << std::endl;
 
             size_t posInt = 0;
-            std::map<std::string, std::string> mapIntern;
+            text texIntern;
             std::string deliInter;
             // Get Title
             token.erase(0, 10);
             deliInter = "\", \"id\": \"";
             posInt = token.find(deliInter);
-            mapIntern["title"] = token.substr(0, posInt);
+            texIntern.title = token.substr(0, posInt);
             // Get id
             token.erase(0, posInt + 10);
             deliInter = "\", \"number_of_lines\": ";
             posInt = token.find(deliInter);
-            mapIntern["id"] = token.substr(0, posInt);
+            texIntern.id = token.substr(0, posInt);
             // Get number_of_lines
             token.erase(0, posInt + 21);
             deliInter = ", \"author\": \"";
             posInt = token.find(deliInter);
-            mapIntern["number_of_lines"] = token.substr(0, posInt);
+            texIntern.number_of_lines = token.substr(0, posInt);
             // Get author
             token.erase(0, posInt + 13);
             deliInter = "\"";
             posInt = token.find(deliInter);
-            mapIntern["author"] = token.substr(0, posInt);
+            texIntern.author = token.substr(0, posInt);
 
             ligne.erase(0, pos + delimiter.length());
             vectJson.push_back(mapIntern);
