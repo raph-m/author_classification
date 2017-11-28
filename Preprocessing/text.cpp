@@ -137,7 +137,7 @@ string text::intToString(long a){
     return str;
 }
 
-Features text::agregate(){
+Features text::agregate(){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE //
     int l=blockList.size();
     std::vector<int> wordF;
     int wordC;
