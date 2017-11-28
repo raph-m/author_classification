@@ -22,15 +22,14 @@ void Features::createcsv(){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE /
     string name=text::intToString(id);
     std::ofstream myfile("../results.csv", std::ios::in);
     myfile << name+",";
-    myfile << text::intToString(this->wordCount)+",";
-    myfile << text::intToString(this->sentenceCount)+",";
+    myfile << text::intToString(this->wordCount)+",";    
     for (int i=0; i<charFrequency.size();i++){
         myfile << text::intToString(this->charFrequency.at(i))+",";
     }
-    myfile << "\n";
     for (int i=0; i<wordFrequency.size();i++){
         myfile << text::intToString(this->wordFrequency.at(i))+",";
     }
+    myfile << text::intToString(this->sentenceCount);
     myfile << "\n";
     myfile.close();
 }
