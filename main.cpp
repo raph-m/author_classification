@@ -97,6 +97,10 @@ std::vector<Features> createFeaturesForDatabase(int iterations){
 int main(int argc, char *argv[])
 {
     std::vector<Features> vectorFeatures;
-    vectorFeatures = createFeaturesForDatabase(5);
+    int nbriteration=10;
+    vectorFeatures = createFeaturesForDatabase(nbriteration);
+    for (int i=0;i<nbriteration;i++){
+        vectorFeatures.at(i).createcsv();
+    }
     return 0;
 }

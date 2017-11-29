@@ -20,7 +20,8 @@ Features::Features(long number, std::vector<int> wordF,int wordC,std::vector<int
 }
 void Features::createcsv(){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE //
     string name=text::intToString(id);
-    std::ofstream myfile("../results.csv", std::ios::in);
+    std::ofstream myfile("../results.txt", std::ios::in);
+    myfile.seekp(0, ios::end); // On se déplace à la fin du fichier
     myfile << name+",";
     myfile << text::intToString(this->wordCount)+",";    
     for (int i=0; i<charFrequency.size();i++){
