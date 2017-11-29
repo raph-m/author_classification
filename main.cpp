@@ -2,14 +2,13 @@
 #include <iostream>
 #include <Preprocessing/text.h>
 
-std::vector<Features> createFeaturesForDatabase(){
+std::vector<Features> createFeaturesForDatabase(int iterations){
     std::ifstream fichier("../data/final_index.json"); // mettre le json dans le projet ///////////////
     std::vector<Features> vectorFeatures;
     if(fichier){ // checking if file opening worked
         std::string ligne;
         getline(fichier, ligne);
         fichier.close();
-        // std::cout << ligne << std::endl;
 
         // Delete the beggining and the end of the string
         ligne.erase(0, 2);
@@ -19,7 +18,9 @@ std::vector<Features> createFeaturesForDatabase(){
         std::string delimiter = "}, {";
         size_t pos = 0;
         std::string token;
-        while ((pos = ligne.find(delimiter)) != std::string::npos) {
+        int compteur;
+        compteur = 0;
+        while ((pos = ligne.find(delimiter)) != std::string::npos && compteur < iterations) {
             std::cout << "New text read in the database" << std::endl;
             token = ligne.substr(0, pos);
 
@@ -85,6 +86,7 @@ std::vector<Features> createFeaturesForDatabase(){
             std::cout << "Features generated" << std::endl;
 
             vectorFeatures.push_back(featuresIntern);
+            compteur += 1;
         }
     }else{
         std::cout << "Impossible d'ouvrir le fichier !" << std::endl;
@@ -95,6 +97,6 @@ std::vector<Features> createFeaturesForDatabase(){
 int main(int argc, char *argv[])
 {
     std::vector<Features> vectorFeatures;
-    vectorFeatures = createFeaturesForDatabase();
+    vectorFeatures = createFeaturesForDatabase(5);
     return 0;
 }
