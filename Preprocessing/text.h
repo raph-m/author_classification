@@ -29,6 +29,7 @@ public:
     void printMap(std::map<std::string, std::string> mapIn);
     void createBlockList();
     static string intToString(long a);
+    static string floatToString(float a);
     Features agregate();
 
 };

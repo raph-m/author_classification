@@ -79,19 +79,26 @@ string text::intToString(long a){
     return str;
 }
 
+string text::floatToString(float a){
+    stringstream ss;
+    ss << a;
+    string str = ss.str();
+    return str;
+}
+
 Features text::agregate(){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE //
     int l=blockList.size();
-    std::vector<int> wordF(100,0);
+    std::vector<float> wordF(100,0);
     int wordC=0;
-    std::vector<int> charF(95,0);
+    std::vector<float> charF(95,0);
     int sentenceC=0;
     for (int i=0;i<l;i++){
         wordC=wordC+(blockList.at(i).wordCount);
         for (int j=0;j<blockList.at(i).charFrequency.size();j++){
-            charF.at(j)= charF.at(j)+(blockList.at(i).charFrequency.at(j))/l;
+            charF.at(j)= charF.at(j)+((float) blockList.at(i).charFrequency.at(j))/l;
         }
         for (int j=0;j<blockList.at(i).wordFrequency.size();j++){
-            wordF.at(j)= wordF.at(j)+(blockList.at(i).wordFrequency.at(j))/l;
+            wordF.at(j)= wordF.at(j)+((float) blockList.at(i).wordFrequency.at(j))/l;
         }
         sentenceC+=(blockList.at(i).sentenceCount);
     }

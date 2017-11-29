@@ -79,10 +79,10 @@ std::vector<Features> createFeaturesForDatabase(int iterations){
             // Create features
             Features featuresIntern;
             featuresIntern = textIntern.agregate();
-            std::cout << text::intToString(featuresIntern.charFrequency.size())<< std::endl;
-            std::cout << text::intToString(featuresIntern.sentenceCount) << std::endl;
-            std::cout << text::intToString(featuresIntern.wordCount) << std::endl;
-            std::cout << text::intToString(featuresIntern.wordFrequency.size()) << std::endl;
+            std::cout << text::floatToString(featuresIntern.charFrequency.size())<< std::endl;
+            std::cout << text::floatToString(featuresIntern.sentenceCount) << std::endl;
+            std::cout << text::floatToString(featuresIntern.wordCount) << std::endl;
+            std::cout << text::floatToString(featuresIntern.wordFrequency.size()) << std::endl;
             std::cout << "Features generated" << std::endl;
 
             vectorFeatures.push_back(featuresIntern);
@@ -97,7 +97,7 @@ std::vector<Features> createFeaturesForDatabase(int iterations){
 int main(int argc, char *argv[])
 {
     std::vector<Features> vectorFeatures;
-    int nbriteration=10;
+    int nbriteration=2;
     vectorFeatures = createFeaturesForDatabase(nbriteration);
     for (int i=0;i<nbriteration;i++){
         vectorFeatures.at(i).createcsv();
