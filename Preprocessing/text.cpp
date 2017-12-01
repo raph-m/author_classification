@@ -46,15 +46,16 @@ std::string text::getText(int id){
 }
 
 std::vector<Block> text::parseTextToBlock(int id){
+    float blockLength = 10000.0;
     std::string textToParse = text::getText(id);
     std::vector<Block> textParsed;
     size_t numberOfLetters = textToParse.length();
-    for (int i = 0; i < numberOfLetters/1000; i++){
+    for (int i = 0; i < numberOfLetters/blockLength; i++){
         std::vector<char> block;
          //std::cout << "New block" << std::endl;
-        for (int j = 0; j < 1000; j++){
+        for (int j = 0; j < blockLength; j++){
             // std::cout << textToParse[i*j] << " ";
-            block.push_back(char(textToParse[i * 1000 + j]));
+            block.push_back(char(textToParse[i * blockLength + j]));
         }
         textParsed.push_back(Block(id,block));
         // std::cout << std::endl;
