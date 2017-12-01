@@ -113,7 +113,9 @@ void createTextFeatures(int iterations){
         int compteur;
         compteur = 0;
         while ((pos = ligne.find(delimiter)) != std::string::npos && compteur < iterations) {
+            std::cout << "=============================" << std::endl;
             std::cout << "New text read in the database" << std::endl;
+            std::cout << "Iteration: " << compteur << std::endl;
             token = ligne.substr(0, pos);
 
             size_t posInt = 0;
