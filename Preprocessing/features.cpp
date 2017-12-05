@@ -11,7 +11,7 @@ Features::Features(){
 //    this->wordCount = f2;
 //}
 
-Features::Features(long number, long idAuthor, std::vector<int> wordF,int wordC,std::vector<int> charF,int sentenceC,int unicC,int diffC,int subC){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE //
+Features::Features(long number, long idAuthor, std::vector<int> wordF,int wordC,std::vector<int> charF,int sentenceC,int unicC,int diffC,int subC,float devW,float devS){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE //
     this->id = number;
     this->idAuthor = idAuthor;
     this->charFrequency = charF;
@@ -21,7 +21,10 @@ Features::Features(long number, long idAuthor, std::vector<int> wordF,int wordC,
     this->unicWordsCount=unicC;
     this->differentWordsCount=diffC;
     this->subordinationsCount=subC;
+    this->wordLengthDeviation=devW;
+    this->sentenceLengthDeviation=devS;
 }
+
 void Features::createcsv(std::string outputFileName){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE //
     string name=text::intToString(id);
     std::string path = "../" + outputFileName + ".txt";
@@ -39,8 +42,10 @@ void Features::createcsv(std::string outputFileName){ // A UPDATER A CHAQUE FOIS
         }
         myfile << text::floatToString(this->sentenceCount)+",";
         myfile << text::floatToString(this->unicWordsCount)+",";
+        myfile << text::floatToString(this->differentWordsCount)+",";
         myfile << text::floatToString(this->subordinationsCount)+",";
-        myfile << text::floatToString(this->differentWordsCount);
+        myfile << text::floatToString(this->wordLengthDeviation)+",";
+        myfile << text::floatToString(this->sentenceLengthDeviation);
         myfile << "\n";
     }
-}
+};

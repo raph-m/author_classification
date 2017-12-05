@@ -84,6 +84,8 @@ std::map<int, std::string> createtxtFile(int iterations, std::string outputFileN
                 textIntern.blockList[i].updateWordCount();
                 textIntern.blockList[i].updateWordFrequency();
                 textIntern.blockList[i].updateSubordinationsCount();
+                textIntern.blockList[i].updateWordLengthDeviation();
+                textIntern.blockList[i].updateSentenceLengthDeviation();
             }
             std::cout << "Block's functions for BlockList processed" << std::endl;
 
@@ -151,6 +153,8 @@ void preprocessingTest(std::string path, std::string outputFileName){ //Update f
         finalText.blockList[i].updateWordCount();
         finalText.blockList[i].updateWordFrequency();
         finalText.blockList[i].updateSubordinationsCount();
+        finalText.blockList[i].updateWordLengthDeviation();
+        finalText.blockList[i].updateSentenceLengthDeviation();
     }
 
     // Create features

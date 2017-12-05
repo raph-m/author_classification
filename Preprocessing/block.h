@@ -19,6 +19,8 @@ public:
     int differentWordsCount;
     int unicWordsCount;
     int subordinationsCount;
+    float wordLengthDeviation;
+    float sentenceLengthDeviation;
 
     Block();
     Block(long number, vector<char> text);
@@ -30,6 +32,8 @@ public:
     void updateUnicWordsCount();
     void updateWordFrequency();
     void updateSubordinationsCount();
+    void updateWordLengthDeviation();
+    void updateSentenceLengthDeviation();
 
 };
 

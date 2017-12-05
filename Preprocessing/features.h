@@ -22,11 +22,12 @@ public:
     int differentWordsCount;
     int unicWordsCount;
     int subordinationsCount;
-
+    float wordLengthDeviation;
+    float sentenceLengthDeviation;
 
 
     Features();
-    Features(long number, long idAuthor, std::vector<int> wordF,int wordC,std::vector<int> charF,int sentenceC,int unicC,int diffC,int subC);
+    Features(long number, long idAuthor, std::vector<int> wordF,int wordC,std::vector<int> charF,int sentenceC,int unicC,int diffC,int subC,float devW,float devS);
     void createcsv(std::string outputFileName);
 
 };
