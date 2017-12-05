@@ -95,7 +95,15 @@ std::map<int, std::string> createtxtFile(int iterations, std::string outputFileN
 //            std::cout << text::floatToString(featuresIntern.wordCount) << std::endl;
 //            std::cout << text::floatToString(featuresIntern.wordFrequency.size()) << std::endl;
             std::cout << "Features generated" << std::endl;
-            for (int i=0;i<featuresIntern.size();i++){featuresIntern.at(i).createcsv(outputFileName);}
+
+            // Implement the txt file
+            std::string path = "../" + outputFileName + ".txt";
+            std::ofstream myfile(path.c_str());
+            if(myfile.is_open()){
+                for (int i=0;i<featuresIntern.size();i++){
+                    featuresIntern.at(i).createcsv(outputFileName);
+                }
+            }
 
             compteur += 1;
         }
@@ -157,7 +165,13 @@ void preprocessingTest(std::string path, std::string outputFileName){ //Update f
     vector<Features> featuresIntern;
     featuresIntern = finalText.agregate();
     std::cout << "Features generated" << std::endl;
-    for (int i=0;i<featuresIntern.size();i++){
-        featuresIntern.at(i).createcsv(outputFileName);
+
+    // Implement the txt file
+    std::string path2 = "../" + outputFileName + ".txt";
+    std::ofstream myfile(path2.c_str());
+    if(myfile.is_open()){
+        for (int i=0;i<featuresIntern.size();i++){
+            featuresIntern.at(i).createcsv(outputFileName);
+        }
     }
 }

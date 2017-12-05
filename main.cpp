@@ -4,7 +4,7 @@
 #include <Preprocessing/buildtxt.cpp>
 
 int main(int argc, char *argv[]){
-    int nbriteration = 10;
+    int nbriteration = 4;
     std::map<int, std::string> idToAuthor;
     //idToAuthor = createTextFeatures(nbriteration);
     createtxtFile(nbriteration, "results");
