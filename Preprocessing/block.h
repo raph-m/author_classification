@@ -27,9 +27,7 @@ public:
     void updateWordCount();
     void updateSentenceCount();
     void updateCharFrequency();
-    void updateDifferentWords();
     void updateDifferentWordsCount();
-    void updateUnicWords();
     void updateUnicWordsCount();
     void updateWordFrequency();
 
