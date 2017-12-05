@@ -18,7 +18,7 @@ text::text(std::string x, std::string y,long number,std::vector<Block> blockList
 std::string text::getText(int id){
     // Find the file
     string str = text::intToString(id);
-    std::string filePath = std::string("../data/books/") + str + ".txt"; //A VERFIER///////////////////////
+    std::string filePath = std::string("../data/books/") + str + ".txt";
 
     // Open the file
     std::ifstream fichier(filePath.c_str(), std::ios::in);
@@ -39,8 +39,6 @@ std::string text::getText(int id){
         fichier.close();
     }else{
         std::cout << "Impossible d'ouvrir le fichier !" << std::endl;
-
-        // std::cout << result << std::endl;
     }
     return result;
 }
@@ -54,11 +52,16 @@ std::vector<Block> text::parseTextToBlock(int id){
         std::vector<char> block;
          //std::cout << "New block" << std::endl;
         for (int j = 0; j < blockLength; j++){
-            // std::cout << textToParse[i*j] << " ";
             block.push_back(char(textToParse[i * blockLength + j]));
         }
-        textParsed.push_back(Block(id,block));
-        // std::cout << std::endl;
+        // Create Block id
+                int times = 1;
+                int idBlock;
+                while(times <= i){
+                    times *= 10;
+                }
+                idBlock = id*times + i;
+        textParsed.push_back(Block(idBlock,block));
     }
     return(textParsed);
 }
