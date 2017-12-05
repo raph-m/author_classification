@@ -46,7 +46,7 @@ std::string text::getText(int id){
 }
 
 std::vector<Block> text::parseTextToBlock(int id){
-    float blockLength = 10000.0;
+    int blockLength = 10000;
     std::string textToParse = text::getText(id);
     std::vector<Block> textParsed;
     size_t numberOfLetters = textToParse.length();
