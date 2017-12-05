@@ -11,8 +11,9 @@ Features::Features(){
 //    this->wordCount = f2;
 //}
 
-Features::Features(long number, std::vector<int> wordF,int wordC,std::vector<int> charF,int sentenceC,int unicC,int diffC,int subC){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE //
+Features::Features(long number, long idAuthor, std::vector<int> wordF,int wordC,std::vector<int> charF,int sentenceC,int unicC,int diffC,int subC){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE //
     this->id = number;
+    this->idAuthor = idAuthor;
     this->charFrequency = charF;
     this->wordCount = wordC;
     this->sentenceCount = sentenceC;
