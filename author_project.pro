@@ -11,7 +11,8 @@ SOURCES += main.cpp \
     Preprocessing/testgit.cpp \
     Preprocessing/text.cpp \
     Preprocessing/block.cpp \
-    Preprocessing/features.cpp
+    Preprocessing/features.cpp \
+    Preprocessing/buildtxt.cpp
 
 HEADERS += \
     Preprocessing/testgit.h \
