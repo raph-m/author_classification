@@ -27,7 +27,7 @@ public:
 
     Features();
     Features(long number, long idAuthor, std::vector<int> wordF,int wordC,std::vector<int> charF,int sentenceC,int unicC,int diffC,int subC);
-    void createcsv();
+    void createcsv(std::string outputFileName);
 
 };
 

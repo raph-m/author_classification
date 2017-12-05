@@ -22,9 +22,10 @@ Features::Features(long number, long idAuthor, std::vector<int> wordF,int wordC,
     this->differentWordsCount=diffC;
     this->subordinationsCount=subC;
 }
-void Features::createcsv(){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE //
+void Features::createcsv(std::string outputFileName){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE //
     string name=text::intToString(id);
-    std::ofstream myfile("../results.txt", std::ios::in);
+    std::string path = "../" + outputFileName + ".txt";
+    std::ofstream myfile(path.c_str(), std::ios::in);
     myfile.seekp(0, ios::end); // On se déplace à la fin du fichier
     myfile << name+",";
     myfile << text::intToString(idAuthor)+",";

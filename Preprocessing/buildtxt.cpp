@@ -2,7 +2,7 @@
 #include <iostream>
 #include <Preprocessing/text.h>
 
-std::map<int, std::string> createtxtFile(int iterations){
+std::map<int, std::string> createtxtFile(int iterations, std::string outputFileName){
     std::ifstream fichier("../data/final_index.json");
     int compteurMap = 0;
     std::map<int, std::string> idToAuthor;
@@ -95,7 +95,7 @@ std::map<int, std::string> createtxtFile(int iterations){
 //            std::cout << text::floatToString(featuresIntern.wordCount) << std::endl;
 //            std::cout << text::floatToString(featuresIntern.wordFrequency.size()) << std::endl;
             std::cout << "Features generated" << std::endl;
-            for (int i=0;i<featuresIntern.size();i++){featuresIntern.at(i).createcsv();}
+            for (int i=0;i<featuresIntern.size();i++){featuresIntern.at(i).createcsv(outputFileName);}
 
             compteur += 1;
         }
@@ -103,4 +103,61 @@ std::map<int, std::string> createtxtFile(int iterations){
         std::cout << "Impossible d'ouvrir le fichier !" << std::endl;
     }
     return idToAuthor;
+}
+
+void preprocessingTest(std::string path, std::string outputFileName){ //Update for each new feature
+    // Open the file
+    std::ifstream fichier(path.c_str(), std::ios::in);
+
+    // Prepare the result
+    std::string result = "";
+    text finalText;
+
+    if(fichier){  // si l'ouverture a fonctionné
+        std::string ligne;
+        while(getline(fichier, ligne))  // tant que l'on peut mettre la ligne dans "contenu"
+        {
+            size_t lastLetter = ligne.length() - 1;
+            if (ligne[lastLetter] == '-'){
+                ligne.erase(lastLetter);
+            }
+            result = result + " " + ligne;
+        }
+        fichier.close();
+    }else{
+        std::cout << "Impossible d'ouvrir le fichier !" << std::endl;
+    }
+    std::cout << "Text read" << std::endl;
+
+    // Create blockList
+    int blockLength = 30000;
+    std::vector<Block> textParsed;
+    size_t numberOfLetters = result.length();
+    for (int i = 0; i < numberOfLetters/blockLength; i++){
+        // std::cout << "New block created" << std::endl;
+        std::vector<char> block;
+        for (int j = 0; j < blockLength; j++){
+            block.push_back(char(result[i * blockLength + j]));
+        }
+        finalText.blockList.push_back(Block(i, block));
+    }
+
+    // Create blocks from blockList (functions)
+    for(int i=0; i< finalText.blockList.size(); i++){
+        finalText.blockList[i].updateCharFrequency();
+        finalText.blockList[i].updateDifferentWordsCount();
+        finalText.blockList[i].updateSentenceCount();
+        finalText.blockList[i].updateUnicWordsCount();
+        finalText.blockList[i].updateWordCount();
+        finalText.blockList[i].updateWordFrequency();
+        finalText.blockList[i].updateSubordinationsCount();
+    }
+
+    // Create features
+    vector<Features> featuresIntern;
+    featuresIntern = finalText.agregate();
+    std::cout << "Features generated" << std::endl;
+    for (int i=0;i<featuresIntern.size();i++){
+        featuresIntern.at(i).createcsv(outputFileName);
+    }
 }
