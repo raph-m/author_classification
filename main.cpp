@@ -72,6 +72,7 @@ std::vector<Features> createFeaturesForDatabase(int iterations){
                 textIntern.blockList[i].updateUnicWordsCount();
                 textIntern.blockList[i].updateWordCount();
                 textIntern.blockList[i].updateWordFrequency();
+                textIntern.blockList[i].updateSubordinationsCount();
             }
             std::cout << "Block's functions for BlockList processed" << std::endl;
 
@@ -175,6 +176,7 @@ std::map<int, std::string> createTextFeatures(int iterations){
                 textIntern.blockList[i].updateUnicWordsCount();
                 textIntern.blockList[i].updateWordCount();
                 textIntern.blockList[i].updateWordFrequency();
+                textIntern.blockList[i].updateSubordinationsCount();
             }
             std::cout << "Block's functions for BlockList processed" << std::endl;
 
