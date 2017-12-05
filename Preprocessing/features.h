@@ -14,13 +14,17 @@ class Features
 public:
 
     long id;
-    std::vector<float> wordFrequency;
+    vector<int> charFrequency;
+    vector<int> wordFrequency;
     int wordCount;
-    std::vector<float> charFrequency;
     int sentenceCount;
+    int differentWordsCount;
+    int unicWordsCount;
+
+
 
     Features();
-    Features(long number, std::vector<float> wordF,int wordC,std::vector<float> charF,int sentenceC);
+    Features(long number, std::vector<int> wordF,int wordC,std::vector<int> charF,int sentenceC,int unicC,int diffC);
     void createcsv();
 
 };

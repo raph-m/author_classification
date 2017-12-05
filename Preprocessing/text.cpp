@@ -87,23 +87,17 @@ string text::floatToString(float a){
     return str;
 }
 
-Features text::agregate(){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE //
+vector<Features> text::agregate(){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE //
     int l=blockList.size();
+    vector<Features> res;
     std::vector<float> wordF(100,0);
     int wordC=0;
     std::vector<float> charF(95,0);
     int sentenceC=0;
     for (int i=0;i<l;i++){
-        wordC=wordC+(blockList.at(i).wordCount);
-        for (int j=0;j<blockList.at(i).charFrequency.size();j++){
-            charF.at(j)= charF.at(j)+((float) blockList.at(i).charFrequency.at(j))/l;
-        }
-        for (int j=0;j<blockList.at(i).wordFrequency.size();j++){
-            wordF.at(j)= wordF.at(j)+((float) blockList.at(i).wordFrequency.at(j))/l;
-        }
-        sentenceC+=(blockList.at(i).sentenceCount);
+        res.push_back(Features(id,blockList.at(i).wordFrequency,blockList.at(i).wordCount,blockList.at(i).charFrequency,blockList.at(i).sentenceCount,blockList.at(i).unicWordsCount,blockList.at(i).differentWordsCount));
     }
-    return Features(id,wordF,wordC/l,charF,sentenceC/l);
+    return res;
 }
 
 

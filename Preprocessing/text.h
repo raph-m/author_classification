@@ -30,7 +30,7 @@ public:
     void createBlockList();
     static string intToString(long a);
     static string floatToString(float a);
-    Features agregate();
+    vector<Features> agregate();
 
 };
 

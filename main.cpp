@@ -77,15 +77,15 @@ std::vector<Features> createFeaturesForDatabase(int iterations){
             std::cout << "Block's functions for BlockList processed" << std::endl;
 
             // Create features
-            Features featuresIntern;
+            vector<Features> featuresIntern;
             featuresIntern = textIntern.agregate();
-            std::cout << text::floatToString(featuresIntern.charFrequency.size())<< std::endl;
-            std::cout << text::floatToString(featuresIntern.sentenceCount) << std::endl;
-            std::cout << text::floatToString(featuresIntern.wordCount) << std::endl;
-            std::cout << text::floatToString(featuresIntern.wordFrequency.size()) << std::endl;
+//            std::cout << text::floatToString(featuresIntern.charFrequency.size())<< std::endl;
+//            std::cout << text::floatToString(featuresIntern.sentenceCount) << std::endl;
+//            std::cout << text::floatToString(featuresIntern.wordCount) << std::endl;
+//            std::cout << text::floatToString(featuresIntern.wordFrequency.size()) << std::endl;
             std::cout << "Features generated" << std::endl;
 
-            vectorFeatures.push_back(featuresIntern);
+            for (int i=0;i< featuresIntern.size();i++){vectorFeatures.push_back(featuresIntern.at(i));}
             compteur += 1;
         }
     }else{
@@ -171,14 +171,14 @@ void createTextFeatures(int iterations){
             std::cout << "Block's functions for BlockList processed" << std::endl;
 
             // Create features
-            Features featuresIntern;
+            vector<Features> featuresIntern;
             featuresIntern = textIntern.agregate();
-            std::cout << text::floatToString(featuresIntern.charFrequency.size())<< std::endl;
-            std::cout << text::floatToString(featuresIntern.sentenceCount) << std::endl;
-            std::cout << text::floatToString(featuresIntern.wordCount) << std::endl;
-            std::cout << text::floatToString(featuresIntern.wordFrequency.size()) << std::endl;
+//            std::cout << text::floatToString(featuresIntern.charFrequency.size())<< std::endl;
+//            std::cout << text::floatToString(featuresIntern.sentenceCount) << std::endl;
+//            std::cout << text::floatToString(featuresIntern.wordCount) << std::endl;
+//            std::cout << text::floatToString(featuresIntern.wordFrequency.size()) << std::endl;
             std::cout << "Features generated" << std::endl;
-            featuresIntern.createcsv();
+            for (int i=0;i<featuresIntern.size();i++){featuresIntern.at(i).createcsv();}
 
             //vectorFeatures.push_back(featuresIntern);
             compteur += 1;
@@ -191,7 +191,7 @@ void createTextFeatures(int iterations){
 int main(int argc, char *argv[])
 {
     //std::vector<Features> vectorFeatures;
-    int nbriteration=594;
+    int nbriteration=2;
     //vectorFeatures = createFeaturesForDatabase(nbriteration);
     createTextFeatures(nbriteration);
     return 0;
