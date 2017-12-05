@@ -65,7 +65,7 @@ void Block::updateCharFrequency(){// takes into account characters from 32 (spac
 
 // renvoie la liste des mots rencontrés (les mots étant définis grâce à l'ensemble des séparateurs)
 // prend en compte les mots tronqués possibles : ne compte pas le 1er mot s'il n'y a pas un séparateur avant et le dernier s'il n'y a pas un séparateur après
-void Block::updateDifferentWords() {
+void Block::updateDifferentWordsCount() {
 
 
     // caractères séparateurs de mots
@@ -99,16 +99,11 @@ void Block::updateDifferentWords() {
             temp = string();
         }
     }
-    this->differentWords = res;
-}
-
-// suppose d'avoir calculer differentWords avant
-void Block::updateDifferentWordsCount(){
-    this->differentWordsCount = this->differentWords.size();
+    this->differentWordsCount = res.size();
 }
 
 // renvoie les mots rencontrés une seule fois (définis par la liste des séparateurs)
-void Block::updateUnicWords() {
+void Block::updateUnicWordsCount() {
 
     // caractères séparateurs de mots
     vector<char> separators = vector<char>();
@@ -146,14 +141,8 @@ void Block::updateUnicWords() {
             temp = string();
         }
     }
-    this->unicWords = unic;
+    this->unicWordsCount = unic.size();
 }
-
-// suppose qu'on a déjà déterminé unicWords
-void Block::updateUnicWordsCount(){
-    this->unicWordsCount = this->unicWords.size();
-}
-
 
 void Block::updateWordFrequency(){ // returns an int vector of size 100 (apparitions des 100 mots les plus utilisés)
     vector<char> text = textUnit;

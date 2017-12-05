@@ -66,10 +66,8 @@ std::vector<Features> createFeaturesForDatabase(int iterations){
             // Create blocks from blockList (functions)
             for(int i=0; i< textIntern.blockList.size(); i++){
                 textIntern.blockList[i].updateCharFrequency();
-                textIntern.blockList[i].updateDifferentWords();
                 textIntern.blockList[i].updateDifferentWordsCount();
                 textIntern.blockList[i].updateSentenceCount();
-                textIntern.blockList[i].updateUnicWords();
                 textIntern.blockList[i].updateUnicWordsCount();
                 textIntern.blockList[i].updateWordCount();
                 textIntern.blockList[i].updateWordFrequency();
@@ -160,10 +158,8 @@ void createTextFeatures(int iterations){
             // Create blocks from blockList (functions)
             for(int i=0; i< textIntern.blockList.size(); i++){
                 textIntern.blockList[i].updateCharFrequency();
-                textIntern.blockList[i].updateDifferentWords();
                 textIntern.blockList[i].updateDifferentWordsCount();
                 textIntern.blockList[i].updateSentenceCount();
-                textIntern.blockList[i].updateUnicWords();
                 textIntern.blockList[i].updateUnicWordsCount();
                 textIntern.blockList[i].updateWordCount();
                 textIntern.blockList[i].updateWordFrequency();
