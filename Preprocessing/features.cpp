@@ -32,7 +32,9 @@ void Features::createcsv(){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE /
     for (int i=0; i<wordFrequency.size();i++){
         myfile << text::floatToString(this->wordFrequency.at(i))+",";
     }
-    myfile << text::floatToString(this->sentenceCount);
+    myfile << text::floatToString(this->sentenceCount)+",";
+    myfile << text::floatToString(this->unicWordsCount)+",";
+    myfile << text::floatToString(this->differentWordsCount);
     myfile << "\n";
     myfile.close();
 }
