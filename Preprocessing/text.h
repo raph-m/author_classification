@@ -18,6 +18,7 @@ public:
     std::string title;
     std::string author;
     long id;
+    long idAuthor;
     int number_of_lines;
     std::vector<Block> blockList;
 
