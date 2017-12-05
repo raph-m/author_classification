@@ -95,7 +95,7 @@ vector<Features> text::agregate(){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FE
     std::vector<float> charF(95,0);
     int sentenceC=0;
     for (int i=0;i<l;i++){
-        res.push_back(Features(id,blockList.at(i).wordFrequency,blockList.at(i).wordCount,blockList.at(i).charFrequency,blockList.at(i).sentenceCount,blockList.at(i).unicWordsCount,blockList.at(i).differentWordsCount));
+        res.push_back(Features(id,blockList.at(i).wordFrequency,blockList.at(i).wordCount,blockList.at(i).charFrequency,blockList.at(i).sentenceCount,blockList.at(i).unicWordsCount,blockList.at(i).differentWordsCount,blockList.at(i).subordinationsCount));
     }
     return res;
 }

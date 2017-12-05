@@ -71,6 +71,7 @@ std::vector<Features> createFeaturesForDatabase(int iterations){
                 textIntern.blockList[i].updateUnicWordsCount();
                 textIntern.blockList[i].updateWordCount();
                 textIntern.blockList[i].updateWordFrequency();
+                textIntern.blockList[i].updateSubordinationsCount();
             }
             std::cout << "Block's functions for BlockList processed" << std::endl;
 
@@ -163,6 +164,7 @@ void createTextFeatures(int iterations){
                 textIntern.blockList[i].updateUnicWordsCount();
                 textIntern.blockList[i].updateWordCount();
                 textIntern.blockList[i].updateWordFrequency();
+                textIntern.blockList[i].updateSubordinationsCount();
             }
             std::cout << "Block's functions for BlockList processed" << std::endl;
 
@@ -186,9 +188,9 @@ void createTextFeatures(int iterations){
 
 int main(int argc, char *argv[])
 {
-    //std::vector<Features> vectorFeatures;
+    std::vector<Features> vectorFeatures;
     int nbriteration=2;
-    //vectorFeatures = createFeaturesForDatabase(nbriteration);
+    vectorFeatures = createFeaturesForDatabase(nbriteration);
     createTextFeatures(nbriteration);
     return 0;
 }

@@ -204,3 +204,76 @@ void Block::updateWordFrequency(){ // returns an int vector of size 100 (apparit
 
     wordFrequency = res;
 }
+
+void Block::updateSubordinationsCount() {
+
+    // conjonctions de subordination
+    vector<string> sub = vector<string>();
+    sub.push_back("after");
+    sub.push_back("although");
+    sub.push_back("as");
+    sub.push_back("because");
+    sub.push_back("before");
+    sub.push_back("even");
+    sub.push_back("how");
+    sub.push_back("if");
+    sub.push_back("inasmuch");
+    sub.push_back("lest");
+    sub.push_back("now");
+    sub.push_back("once");
+    sub.push_back("provided");
+    sub.push_back("rather");
+    sub.push_back("since");
+    sub.push_back("so");
+    sub.push_back("supposing");
+    sub.push_back("than");
+    sub.push_back("that");
+    sub.push_back("though");
+    sub.push_back("till");
+    sub.push_back("unless");
+    sub.push_back("until");
+    sub.push_back("when");
+    sub.push_back("whenever");
+    sub.push_back("where");
+    sub.push_back("whereas");
+    sub.push_back("wherever");
+    sub.push_back("whether");
+    sub.push_back("which");
+    sub.push_back("while");
+    sub.push_back("who");
+    sub.push_back("whoever");
+    sub.push_back("why");
+
+    // caractères séparateurs de mots
+    vector<char> sep = vector<char>();
+    sep.push_back(' ');
+    sep.push_back('.');
+    sep.push_back(',');
+    sep.push_back('!');
+    sep.push_back('?');
+    sep.push_back('\'');
+    sep.push_back('(');
+    sep.push_back(')');
+
+    int res = 0;
+    string temp = string();
+    vector<char>::iterator it = this->textUnit.begin();
+
+    // on ne compte pas le premier mot s'il n'y a pas un séparateur avant (évacue les mots tronqués en début de bloc)
+    while (find(sep.begin(), sep.end(), *it) == sep.end()) {
+        it++;
+    }
+
+    for (it; it != this->textUnit.end(); ++it) {
+        if (find(sep.begin(), sep.end(), *it) == sep.end()) {
+            temp += *it;
+        }
+        else if (temp != string()) { // évite d'ajouter une string vide si 2 séparateurs consécutifs
+            if (find(sub.begin(), sub.end(), temp) != sub.end()) {
+                res++;
+            }
+            temp = string();
+        }
+    }
+    subordinationsCount = res;
+}

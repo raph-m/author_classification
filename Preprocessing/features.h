@@ -20,11 +20,12 @@ public:
     int sentenceCount;
     int differentWordsCount;
     int unicWordsCount;
+    int subordinationsCount;
 
 
 
     Features();
-    Features(long number, std::vector<int> wordF,int wordC,std::vector<int> charF,int sentenceC,int unicC,int diffC);
+    Features(long number, std::vector<int> wordF,int wordC,std::vector<int> charF,int sentenceC,int unicC,int diffC,int subC);
     void createcsv();
 
 };
