@@ -26,20 +26,21 @@ void Features::createcsv(std::string outputFileName){ // A UPDATER A CHAQUE FOIS
     string name=text::intToString(id);
     std::string path = "../" + outputFileName + ".txt";
     std::ofstream myfile(path.c_str(), std::ios::in);
-    myfile.seekp(0, ios::end); // On se déplace à la fin du fichier
-    myfile << name+",";
-    myfile << text::intToString(idAuthor)+",";
-    myfile << text::floatToString(this->wordCount)+",";
-    for (int i=0; i<charFrequency.size();i++){
-        myfile << text::floatToString(this->charFrequency.at(i))+",";
+    if (myfile.is_open()){
+        myfile.seekp(0, ios::end); // On se déplace à la fin du fichier
+        myfile << name+",";
+        myfile << text::intToString(idAuthor)+",";
+        myfile << text::floatToString(this->wordCount)+",";
+        for (int i=0; i<charFrequency.size();i++){
+            myfile << text::floatToString(this->charFrequency.at(i))+",";
+        }
+        for (int i=0; i<wordFrequency.size();i++){
+            myfile << text::floatToString(this->wordFrequency.at(i))+",";
+        }
+        myfile << text::floatToString(this->sentenceCount)+",";
+        myfile << text::floatToString(this->unicWordsCount)+",";
+        myfile << text::floatToString(this->subordinationsCount)+",";
+        myfile << text::floatToString(this->differentWordsCount);
+        myfile << "\n";
     }
-    for (int i=0; i<wordFrequency.size();i++){
-        myfile << text::floatToString(this->wordFrequency.at(i))+",";
-    }
-    myfile << text::floatToString(this->sentenceCount)+",";
-    myfile << text::floatToString(this->unicWordsCount)+",";
-    myfile << text::floatToString(this->subordinationsCount)+",";
-    myfile << text::floatToString(this->differentWordsCount);
-    myfile << "\n";
-    myfile.close();
-};
+}

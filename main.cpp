@@ -3,12 +3,11 @@
 #include <Preprocessing/text.h>
 #include <Preprocessing/buildtxt.cpp>
 
-int main(int argc, char *argv[])
-{
-    int nbriteration = 100;
+int main(int argc, char *argv[]){
+    int nbriteration = 10;
     std::map<int, std::string> idToAuthor;
     //idToAuthor = createTextFeatures(nbriteration);
-    //createtxtFile(nbriteration, "results");
+    createtxtFile(nbriteration, "results");
     preprocessingTest("../27.txt", "testResult");
     return 0;
 }
