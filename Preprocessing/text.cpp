@@ -44,7 +44,7 @@ std::string text::getText(int id){
 }
 
 std::vector<Block> text::parseTextToBlock(int id){
-    int blockLength = 10000;
+    int blockLength = 30000;
     std::string textToParse = text::getText(id);
     std::vector<Block> textParsed;
     size_t numberOfLetters = textToParse.length();
@@ -98,7 +98,7 @@ vector<Features> text::agregate(){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FE
     std::vector<float> charF(95,0);
     int sentenceC=0;
     for (int i=0;i<l;i++){
-        res.push_back(Features(id,blockList.at(i).wordFrequency,blockList.at(i).wordCount,blockList.at(i).charFrequency,blockList.at(i).sentenceCount,blockList.at(i).unicWordsCount,blockList.at(i).differentWordsCount));
+        res.push_back(Features(idAuthor,blockList.at(i).wordFrequency,blockList.at(i).wordCount,blockList.at(i).charFrequency,blockList.at(i).sentenceCount,blockList.at(i).unicWordsCount,blockList.at(i).differentWordsCount));
     }
     return res;
 }

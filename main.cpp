@@ -2,6 +2,7 @@
 #include <iostream>
 #include <Preprocessing/text.h>
 
+/*
 std::vector<Features> createFeaturesForDatabase(int iterations){
     std::ifstream fichier("../data/final_index.json"); // mettre le json dans le projet ///////////////
     std::vector<Features> vectorFeatures;
@@ -91,10 +92,14 @@ std::vector<Features> createFeaturesForDatabase(int iterations){
     }
     return(vectorFeatures);
 }
+*/
 
-void createTextFeatures(int iterations){
-    std::ifstream fichier("../data/final_index.json"); // mettre le json dans le projet ///////////////
-    //std::vector<Features> vectorFeatures;
+std::map<int, std::string> createTextFeatures(int iterations){
+    std::ifstream fichier("../data/final_index.json");
+    int compteurMap = 0;
+    std::map<int, std::string> idToAuthor;
+    std::map<std::string, int> authorToId;
+
     if(fichier){ // checking if file opening worked
         std::string ligne;
         getline(fichier, ligne);
@@ -127,13 +132,13 @@ void createTextFeatures(int iterations){
             textIntern.title = token.substr(0, posInt);
             std::cout << "Title acquired" << std::endl;
 
-            // Get id
+            // Get id of the text
             token.erase(0, posInt + 10);
             deliInter = "\", \"number_of_lines\": ";
             posInt = token.find(deliInter);
             char * pEnd;
             textIntern.id = std::strtol((token.substr(0, posInt)).c_str(), &pEnd, 10);
-            std::cout << "Id acquired" << std::endl;
+            std::cout << "Id of the text acquired" << std::endl;
 
             // Get number_of_lines
             token.erase(0, posInt + 21);
@@ -147,6 +152,13 @@ void createTextFeatures(int iterations){
             deliInter = "\"";
             posInt = token.find(deliInter);
             textIntern.author = token.substr(0, posInt);
+            if (authorToId.count(textIntern.author) == 0){
+                idToAuthor.insert(std::pair<int, string>(compteurMap, textIntern.author));
+                authorToId.insert(std::pair<string, int>(textIntern.author, compteurMap));
+                compteurMap += 1;
+            }
+            textIntern.idAuthor = authorToId[textIntern.author];
+            std::cout << "Id Author: " << authorToId[textIntern.author] << " Author Name: " << textIntern.author << std::endl;
             std::cout << "Author acquired" << std::endl;
 
             ligne.erase(0, pos + delimiter.length());
@@ -176,19 +188,18 @@ void createTextFeatures(int iterations){
             std::cout << "Features generated" << std::endl;
             for (int i=0;i<featuresIntern.size();i++){featuresIntern.at(i).createcsv();}
 
-            //vectorFeatures.push_back(featuresIntern);
             compteur += 1;
         }
     }else{
         std::cout << "Impossible d'ouvrir le fichier !" << std::endl;
     }
+    return idToAuthor;
 }
 
 int main(int argc, char *argv[])
 {
-    //std::vector<Features> vectorFeatures;
-    int nbriteration=2;
-    //vectorFeatures = createFeaturesForDatabase(nbriteration);
-    createTextFeatures(nbriteration);
+    int nbriteration = 10;
+    std::map<int, std::string> idToAuthor;
+    idToAuthor = createTextFeatures(nbriteration);
     return 0;
 }
