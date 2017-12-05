@@ -19,7 +19,7 @@ Block::Block(long number, vector<char> text){
 void Block::updateWordCount(){
     int cmpt = 1;
     for (vector<char>::iterator it = this->textUnit.begin(); it != this->textUnit.end(); ++it) {
-        if (*it == ' ' || *it == '/') {
+        if (*it == ' ') {
             cmpt++;
         }
     }
@@ -276,4 +276,83 @@ void Block::updateSubordinationsCount() {
         }
     }
     subordinationsCount = res;
+}
+
+void Block::updateWordLengthDeviation() {
+    // caractères séparateurs de mots
+    vector<char> sep = vector<char>();
+    sep.push_back(' ');
+    sep.push_back('.');
+    sep.push_back(',');
+    sep.push_back('!');
+    sep.push_back('?');
+    sep.push_back('\'');
+    sep.push_back('(');
+    sep.push_back(')');
+
+    float mean = 0;
+    float variance = 0;
+    vector<float> lengths = vector<float>();
+    string temp = string();
+    vector<char>::iterator it1 = this->textUnit.begin();
+
+    // on ne compte pas le premier mot s'il n'y a pas un séparateur avant (évacue les mots tronqués en début de bloc)
+    while (find(sep.begin(), sep.end(), *it1) == sep.end()) {
+        it1++;
+    }
+
+    for (it1; it1 != this->textUnit.end(); ++it1) {
+        if (find(sep.begin(), sep.end(), *it1) == sep.end()) {
+            temp += *it1;
+        }
+        else if (temp != string()) { // évite d'ajouter une string vide si 2 séparateurs consécutifs
+            lengths.push_back(temp.size());
+            mean += temp.size();
+            temp = string();
+        }
+    }
+
+    mean = mean / lengths.size();
+    vector<float>::iterator it2 = lengths.begin();
+    for (it2; it2 != lengths.end(); ++it2) {
+        variance += (*it2-mean)*(*it2-mean);
+    }
+    wordLengthDeviation = sqrt(variance/lengths.size());
+}
+
+void Block::updateSentenceLengthDeviation(){
+    // caractères séparateurs de phrases
+    vector<char> sep = vector<char>();
+    sep.push_back('.');
+    sep.push_back('!');
+    sep.push_back('?');
+
+    float mean = 0;
+    float variance = 0;
+    vector<float> lengths = vector<float>();
+    string temp = string();
+    vector<char>::iterator it1 = this->textUnit.begin();
+
+    // on ne compte pas la premiere phrase s'il n'y a pas un séparateur avant (évacue les mots tronqués en début de bloc)
+    while (find(sep.begin(), sep.end(), *it1) == sep.end()) {
+        it1++;
+    }
+
+    for (it1; it1 != this->textUnit.end(); ++it1) {
+        if (find(sep.begin(), sep.end(), *it1) == sep.end()) {
+            temp += *it1;
+        }
+        else if (temp != string()) { // évite d'ajouter une string vide si 2 séparateurs consécutifs
+            lengths.push_back(temp.size());
+            mean += temp.size();
+            temp = string();
+        }
+    }
+
+    mean = mean / lengths.size();
+    vector<float>::iterator it2 = lengths.begin();
+    for (it2; it2 != lengths.end(); ++it2) {
+        variance += (*it2 - mean)*(*it2 - mean);
+    }
+    sentenceLengthDeviation = sqrt(variance/lengths.size());
 }
