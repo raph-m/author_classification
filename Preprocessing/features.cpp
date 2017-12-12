@@ -64,8 +64,10 @@ void Features::createcsvTrain(){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEAT
     }
     myfile << text::floatToString(this->sentenceCount)+",";
     myfile << text::floatToString(this->unicWordsCount)+",";
+    myfile << text::floatToString(this->differentWordsCount)+",";
     myfile << text::floatToString(this->subordinationsCount)+",";
-    myfile << text::floatToString(this->differentWordsCount);
+    myfile << text::floatToString(this->wordLengthDeviation)+",";
+    myfile << text::floatToString(this->sentenceLengthDeviation);
     myfile << "\n";
     myfile.close();
 }
