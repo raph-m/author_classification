@@ -25,9 +25,9 @@ Features::Features(long number, long idAuthor, std::vector<int> wordF,int wordC,
     this->sentenceLengthDeviation=devS;
 }
 
-void Features::createcsv(std::string outputFileName){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE //
+void Features::createcsv(std::string outputFileName,std::string filetype){ // A UPDATER A CHAQUE FOIS QU ON AJOUTE UN FEATURE //
     string name=text::intToString(id);
-    std::string path = "../" + outputFileName + ".txt";
+    std::string path = "../" + outputFileName + "."+filetype;
     std::ofstream myfile(path.c_str(), std::ios::in);
     if (myfile.is_open()){
         myfile.seekp(0, ios::end); // On se déplace à la fin du fichier
