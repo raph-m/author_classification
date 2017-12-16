@@ -111,7 +111,7 @@ std::map<int, std::string> createtxtFile(int iterations, std::string outputFileN
     return idToAuthor;
 }
 
-void preprocessingTest(std::string path,std::string filetype, std::string outputFileName){ //Update for each new feature
+int preprocessingTest(std::string path,std::string filetype, std::string outputFileName){ //Update for each new feature
     // Open the file
     std::ifstream fichier(path.c_str(), std::ios::in);
 
@@ -169,9 +169,12 @@ void preprocessingTest(std::string path,std::string filetype, std::string output
     // Implement the txt file
     std::string path2 = "../" + outputFileName + "."+filetype;
     std::ofstream myfile(path2.c_str());
+    int lineCount = 0;
     if(myfile.is_open()){
         for (int i=0;i<featuresIntern.size();i++){
             featuresIntern.at(i).createcsv(outputFileName,filetype);
+            lineCount=lineCount+1;
         }
     }
+    return lineCount;
 }
