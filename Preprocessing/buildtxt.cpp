@@ -1,7 +1,7 @@
 #include <QCoreApplication>
 #include <iostream>
 #include <fstream>
-#include <Preprocessing/text.h>
+#include <author_classification/Preprocessing/text.h>
 using namespace std;
 
 std::map<int, std::string> createtxtFile(int iterations, std::string outputFileName){
@@ -182,32 +182,32 @@ int preprocessingTest(std::string path,std::string filetype, std::string outputF
 }
 
 
-std::string idToAuthor(int id){
-    ifstream data("../mapIdAuthor.txt", std::ios::in);
-    char *intStr;
-    intStr = itoa(id, intStr,10);
-    string str_id = string(intStr);
-    bool est_trouve = false;
-    string ligne;
-    string id_ligne;
-    int t;
-    if(data.is_open()){
-        while(getline(data,ligne)){
-            id_ligne = "";
-            t = 0;
-            while(ligne[t]!=','){
-                id_ligne.push_back(ligne[t]);
-                t++;
-            }
-            if (id_ligne==str_id){
-                t++;
-                est_trouve=true;
-                return ligne.substr(t);
-            }
-        }
-        std::cout << "Auteur non trouve !!" << std::endl;
-    }
-    else{
-        std::cout << "Problème dans l'ouverture du fichier mapIdAuthor.txt ; merci de verifier le path." << endl;
-    }
-}
+//std::string idToAuthor(int id){
+//    ifstream data("../mapIdAuthor.txt", std::ios::in);
+//    char *intStr;
+//    intStr = itoa(id, intStr,10);
+//    string str_id = string(intStr);
+//    bool est_trouve = false;
+//    string ligne;
+//    string id_ligne;
+//    int t;
+//    if(data.is_open()){
+//        while(getline(data,ligne)){
+//            id_ligne = "";
+//            t = 0;
+//            while(ligne[t]!=','){
+//                id_ligne.push_back(ligne[t]);
+//                t++;
+//            }
+//            if (id_ligne==str_id){
+//                t++;
+//                est_trouve=true;
+//                return ligne.substr(t);
+//            }
+//        }
+//        std::cout << "Auteur non trouve !!" << std::endl;
+//    }
+//    else{
+//        std::cout << "Problème dans l'ouverture du fichier mapIdAuthor.txt ; merci de verifier le path." << endl;
+//    }
+//}
