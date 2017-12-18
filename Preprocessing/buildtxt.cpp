@@ -1,6 +1,6 @@
 #include <QCoreApplication>
 #include <iostream>
-#include <Preprocessing/text.h>
+#include <author_classification/Preprocessing/text.h>
 
 std::map<int, std::string> createtxtFile(int iterations, std::string outputFileName){
     std::ifstream fichier("../data/final_index.json");
